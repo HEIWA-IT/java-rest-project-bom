@@ -6,11 +6,11 @@
     <groupId>com.paxleones</groupId>
     <artifactId>java-rest-project</artifactId>
     <version>1.0.0</version>
-    <packaging>bom</packaging>
+    <packaging>pom</packaging>
 
     <name>java-rest-project</name>
-    <description>Define all the dependencies, versions and scope of artifacts used to compile a java back rest project</description>
-
+    <description>Define all the dependencies, versions and scope of artifacts used to compile a java back rest project
+    </description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,8 +18,8 @@
         <java.version>1.8</java.version>
 
         <assertJ.version>3.16.1</assertJ.version>
-        <cukedoctor.version>3.1</cukedoctor.version>
         <cucumber.version>6.4.0</cucumber.version>
+        <cukedoctor.version>3.1</cukedoctor.version>
         <h2.version>1.4.200</h2.version>
         <hibernate-core.version>5.4.0.Final</hibernate-core.version>
         <jackson.version>2.11.2</jackson.version>
@@ -29,11 +29,12 @@
         <liquibase-core.version>4.0.0</liquibase-core.version>
         <mockito.version>3.4.6</mockito.version>
         <postgresql.version>42.2.14</postgresql.version>
-        <spring.version>5.2.8.RELEASE</spring.version>
         <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
         <springfox-swagger.version>3.0.0</springfox-swagger.version>
+        <spring.version>5.2.8.RELEASE</spring.version>
 
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
     </properties>
 
@@ -141,6 +142,12 @@
                 <version>${spring.version}</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-test</artifactId>
+                <version>${spring-boot.version}</version>
+                <scope>test</scope>
+            </dependency>
 
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
@@ -220,39 +227,22 @@
     </dependencyManagement>
 
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven-compiler-plugin.version}</version>
-                    <configuration>
-                        <source>${java.version}</source>
-                        <target>${java.version}</target>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven-surefire-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>${spring-boot.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${maven-deploy-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>paxleones_nexus</id>
+            <url>https://nexus.paxleones.com/repository/paxleones_snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>paxleones_nexus</id>
+            <url>https://nexus.paxleones.com/repository/paxleones_releases/</url>
+        </repository>
+    </distributionManagement>
 </project>
