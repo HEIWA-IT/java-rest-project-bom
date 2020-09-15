@@ -5,7 +5,7 @@
 
     <groupId>com.paxleones</groupId>
     <artifactId>java-rest-project</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>pom</packaging>
 
     <name>java-rest-project</name>
@@ -23,12 +23,15 @@
         <h2.version>1.4.200</h2.version>
         <hibernate-core.version>5.4.0.Final</hibernate-core.version>
         <jackson.version>2.11.2</jackson.version>
+        <jacoco.version>0.8.5</jacoco.version>
         <java.version>1.8</java.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <junit.jupiter.version>5.6.0</junit.jupiter.version>
+        <junit-platform-launcher.version>1.6.2</junit-platform-launcher.version>
         <liquibase-core.version>4.0.0</liquibase-core.version>
         <mockito.version>3.4.6</mockito.version>
         <postgresql.version>42.2.14</postgresql.version>
+        <rest-assured.version>3.0.7</rest-assured.version>
         <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
         <springfox-swagger.version>3.0.0</springfox-swagger.version>
         <spring.version>5.2.8.RELEASE</spring.version>
@@ -200,6 +203,26 @@
                 <scope>test</scope>
             </dependency>
 
+            <dependency>
+                <groupId>org.junit.platform</groupId>
+                <artifactId>junit-platform-launcher</artifactId>
+                <version>${junit-platform-launcher.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.rest-assured</groupId>
+                <artifactId>rest-assured</artifactId>
+                <version>${rest-assured.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!--Jacoco required at runtime to build offline coverages-->
+            <dependency>
+                <groupId>org.jacoco</groupId>
+                <artifactId>org.jacoco.agent</artifactId>
+                <version>${jacoco.version}</version>
+                <classifier>runtime</classifier>
+            </dependency>
+
             <!-- Reporting -->
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
@@ -237,11 +260,11 @@
 
     <distributionManagement>
         <snapshotRepository>
-            <id>paxleones_nexus</id>
+            <id>paxleones_nexus_snapshots</id>
             <url>https://nexus.paxleones.com/repository/paxleones_snapshots/</url>
         </snapshotRepository>
         <repository>
-            <id>paxleones_nexus</id>
+            <id>paxleones_nexus_releases</id>
             <url>https://nexus.paxleones.com/repository/paxleones_releases/</url>
         </repository>
     </distributionManagement>
