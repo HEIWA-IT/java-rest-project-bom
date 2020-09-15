@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.paxleones"
-version = "1.0-SNAPSHOT"
+version = "1.0.1-SNAPSHOT"
 
 //Allows <dependencies> block in Maven BOM
 javaPlatform {
@@ -17,16 +17,19 @@ dependencies {
     val cukedoctorVersion: String by project
     val cucumberVersion: String by project
     val jacksonVersion: String by project
+    val jacocoVersion: String by project
     val jaxbApiVersion: String by project
     val junitJupiterVersion: String by project
+    val junitPlatformLauncherVersion: String by project
     val h2Version: String by project
     val hibernateCoreVersion: String by project
     val liquibaseCoreVersion: String by project
     val mockitoVersion: String by project
     val postgresqlVersion: String by project
-    val springVersion: String by project
+    val restAssuredVersion: String by project
     val springBootVersion: String by project
     val springfoxSwaggerVersion: String by project
+    val springVersion: String by project
 
     //Maven BOM <dependencyManagement> block
     constraints {
@@ -47,19 +50,17 @@ dependencies {
         api("com.h2database:h2:$h2Version")
         api("io.cucumber:cucumber-junit-platform-engine:$cucumberVersion")
         api("io.cucumber:cucumber-java:$cucumberVersion")
+        api("io.rest-assured:rest-assured:$restAssuredVersion")
         api("org.assertj:assertj-core:$assertJVersion")
+        api("org.jacoco:org.jacoco.agent:$jacocoVersion")
         api("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
+        api("org.junit.platform:junit-platform-launcher:$junitPlatformLauncherVersion")
         api("org.mockito:mockito-junit-jupiter:$mockitoVersion")
         api("org.mockito:mockito-core:$mockitoVersion")
         api("org.springframework:spring-test:$springVersion")
         api("org.springframework.boot:spring-boot-test:$springBootVersion")
         api("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
     }
-
-    //Maven BOM <dependencies> block
-    //api(platform("com.fasterxml.jackson:jackson-bom:2.9.8"))
-    //api("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonModuleVersion")
-
 }
 
 //Publishing to Maven repository
