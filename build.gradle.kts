@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.paxleones"
-version = "1.0.1-SNAPSHOT"
+version = "1.0.2-SNAPSHOT"
 
 //Allows <dependencies> block in Maven BOM
 javaPlatform {
@@ -36,6 +36,8 @@ dependencies {
         api("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
         api("com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion")
         api("com.github.cukedoctor:cukedoctor-converter:$cukedoctorVersion")
+        api("com.github.cukedoctor:cukedoctor-main:$cukedoctorVersion")
+
         api("javax.xml.bind:jaxb-api:$jaxbApiVersion")
         api("io.springfox:springfox-boot-starter:$springfoxSwaggerVersion")
         api("org.hibernate:hibernate-core:$hibernateCoreVersion")
@@ -51,6 +53,7 @@ dependencies {
         api("io.cucumber:cucumber-junit-platform-engine:$cucumberVersion")
         api("io.cucumber:cucumber-java:$cucumberVersion")
         api("io.rest-assured:rest-assured:$restAssuredVersion")
+        api("io.rest-assured:json-path:$restAssuredVersion")
         api("org.assertj:assertj-core:$assertJVersion")
         api("org.jacoco:org.jacoco.agent:$jacocoVersion")
         api("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
