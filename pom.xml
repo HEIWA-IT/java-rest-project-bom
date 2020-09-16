@@ -5,7 +5,7 @@
 
     <groupId>com.paxleones</groupId>
     <artifactId>java-rest-project</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packaging>pom</packaging>
 
     <name>java-rest-project</name>
@@ -31,7 +31,7 @@
         <liquibase-core.version>4.0.0</liquibase-core.version>
         <mockito.version>3.4.6</mockito.version>
         <postgresql.version>42.2.14</postgresql.version>
-        <rest-assured.version>3.0.7</rest-assured.version>
+        <rest-assured.version>4.3.1</rest-assured.version>
         <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
         <springfox-swagger.version>3.0.0</springfox-swagger.version>
         <spring.version>5.2.8.RELEASE</spring.version>
@@ -214,6 +214,12 @@
                 <version>${rest-assured.version}</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>io.rest-assured</groupId>
+                <artifactId>json-path</artifactId>
+                <version>${rest-assured.version}</version>
+                <scope>test</scope>
+            </dependency>
 
             <!--Jacoco required at runtime to build offline coverages-->
             <dependency>
@@ -245,6 +251,13 @@
                 <groupId>com.github.cukedoctor</groupId>
                 <artifactId>cukedoctor-converter</artifactId>
                 <version>${cukedoctor.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.github.cukedoctor</groupId>
+                <artifactId>cukedoctor-main</artifactId>
+                <version>${cukedoctor.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
