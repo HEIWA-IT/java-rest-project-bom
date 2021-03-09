@@ -1,0 +1,15 @@
+############################### GENERIC DEVELOPMENT VARIABLES ################################
+export VERSION=1.3.0-SNAPSHOT
+#$(shell git describe --tags --always)
+
+export GRADLE_SETTINGS=--rerun-tasks
+export MAVEN_REPOSITORY=$(shell echo "${HOME}/.m2/repository")
+export MAVEN_SETTINGS=$(shell echo "-s ${MAVEN_SETTINGS_XML} -Dossrh_repo_username=${OSSRH_REPO_USERNAME} -Dossrh_repo_password=${OSSRH_REPO_PASSWORD} -Dossrh_gpg_passphrase=${OSSRH_GPG_PASSPHRASE}")
+export MAVEN_SETTINGS_XML=pipeline/.m2/settings.xml
+##############################################################################################
+
+############################### BUILD PROJECT DEVELOPMENT VARIABLES ###########################
+export APP_NAME=java-rest-project
+
+export BUILD_TYPE=maven
+##############################################################################################
