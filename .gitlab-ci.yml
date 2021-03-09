@@ -21,10 +21,24 @@ cache:
   policy: pull
 
 stages:
+  - setup
   - build_artifacts
+
+
+setup:
+  stage: setup
+  image: heiwait/git-make-maven3.6.3-jdk16
+  script:
+    - 'echo "VERSION=$(git describe --tags --always)" >> build.env'
+  artifacts:
+    reports:
+      dotenv: build.env
 
 build:
   stage: build_artifacts
+  needs:
+    - job: setup
+      artifacts: true
   script:
     - './pipeline/scripts/build_artifacts/build.sh "${VERSION}"'
   artifacts:
