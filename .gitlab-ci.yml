@@ -1,0 +1,40 @@
+before_script:
+  - '#!/bin/bash'
+  - 'export LOG_PATH=$LOG_PATH'
+  - 'export MAVEN_REPOSITORY=${MAVEN_REPOSITORY}'
+  - 'export BUILD_TYPE=${BUILD_TYPE}'
+  - 'export MAVEN_SETTINGS=${MAVEN_SETTINGS}'
+  - 'export GRADLE_SETTINGS=${GRADLE_SETTINGS}'
+  - 'export APP_NAME=${CI_PROJECT_NAME}'
+  - 'export GRADLE_USER_HOME=$(pwd)/.gradle'
+
+variables:
+  GIT_SSL_NO_VERIFY: "true"
+  DOCKER_TLS_CERTDIR: "/certs"
+  MAVEN_OPTS: "-Dmaven.repo.local=/.m2"
+
+cache:
+  paths:
+    - ./build
+    - .gradle/wrapper
+    - .gradle/caches
+  policy: pull
+
+stages:
+  - build_artifacts
+
+build:
+  stage: build_artifacts
+  script:
+    - './pipeline/scripts/build_artifacts/build.sh "${VERSION}"'
+  artifacts:
+    paths:
+      - /var/log
+      - ./build
+    expire_in: 1 day
+  cache:
+    key: "gradle-cache-key"
+    paths:
+      - .gradle/wrapper
+      - .gradle/caches
+    policy: push
