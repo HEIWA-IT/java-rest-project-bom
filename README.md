@@ -218,3 +218,8 @@ To load list of common plugins, plugin versions, repository list and common conf
 
 Now implementation of [build.gradle.kts](https://github.com/cubeprogramming/GradleBOM/blob/master/BOMConsumingProject/settings.gradle.kts) 
 in each Maven BOM consuming project can look much simpler
+
+
+## Updating dependencies version
+Use this maven command to check which dependencies have been updated:  
+./mvnw versions:display-dependency-updates
