@@ -1,7 +1,7 @@
 include $(HOME)/.env
 include ./pipeline/.project_env
 
-all : 	build
+all : 	build clean
 .PHONY: all
 
 # Build
