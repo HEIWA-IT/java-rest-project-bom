@@ -1,6 +1,5 @@
 ############################### GENERIC DEVELOPMENT VARIABLES ################################
-export VERSION=1.3.0-SNAPSHOT
-#$(shell git describe --tags --always)
+export VERSION=$(shell git describe --tags --always)
 
 export GRADLE_SETTINGS=--rerun-tasks
 export MAVEN_REPOSITORY=$(shell echo "${HOME}/.m2/repository")
