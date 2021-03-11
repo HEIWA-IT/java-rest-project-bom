@@ -29,7 +29,7 @@ setup:
   stage: setup
   image: heiwait/git-make-maven3.6.3-jdk16
   script:
-    - 'echo "VERSION=$(git describe --tags --always)" >> build.env'
+    - echo "VERSION=$(git describe --tags --always)" >> build.env
   artifacts:
     reports:
       dotenv: build.env
@@ -40,8 +40,12 @@ build:
   needs:
     - job: setup
       artifacts: true
+  before_script:
+    - gpg --version
+    - gpg --import --batch --yes ${GPG_SECRET_KEY}
+    - gpg --list-secret-keys
   script:
-    - './pipeline/scripts/build_artifacts/build.sh "${VERSION}"'
+    - ./pipeline/scripts/build_artifacts/build.sh "${VERSION}"
   artifacts:
     paths:
       - /var/log

@@ -36,6 +36,8 @@
 VERSION=$1
 echo Version: ${VERSION}
 
+echo MAVEN_SETTINGS: ${MAVEN_SETTINGS}
+
 ################################################################################
 # build_with_maven                                                             #
 ################################################################################
@@ -43,7 +45,7 @@ function build_with_maven()
 {
   echo "Using mvnw"
   ./mvnw versions:set -DnewVersion="${VERSION}" || exit 1
-  ./mvnw deploy ${MAVEN_SETTINGS} -Drevision="${VERSION}" -Dgpg.passphrase="${OSSRH_GPG_PASSPHRASE}" || exit 1
+  ./mvnw deploy ${MAVEN_SETTINGS} -Drevision="${VERSION}" || exit 1
   ./mvnw versions:revert || exit 1
 }
 

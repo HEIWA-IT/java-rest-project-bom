@@ -43,6 +43,7 @@ function clean() {
   if [[ "${BUILD_TYPE}" = "maven" ]]
   then
      echo "Using mvnw"
+     ./mvnw versions:revert || exit 1
     ./mvnw clean || exit 1
   elif [[ "${BUILD_TYPE}" = "gradle" ]]
   then
